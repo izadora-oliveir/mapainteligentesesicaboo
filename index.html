@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mapa Inteligente do Aluno</title>
+  <link rel="stylesheet" href="src/styles.css" />
+  <!-- Chart.js via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="logo">
+      <img src="assets/logo-sesi.png" alt="SESI" />
+      <h1>Mapa Inteligente do Aluno</h1>
+    </div>
+    <nav>
+      <button data-page="overview" class="active">Visão Geral</button>
+      <button data-page="evolucao">Evolução</button>
+      <button data-page="mapa">Mapa Pedagógico</button>
+      <button data-page="alunos">Alunos</button>
+      <a href="privacidade.html" target="_blank">Privacidade (LGPD)</a>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <!-- Página: Visão Geral -->
+    <section id="page-overview" class="page">
+      <header>
+        <h2>Visão Geral</h2>
+        <div class="filtros">
+          <select id="filtro-serie"><option value="">Todas as séries</option></select>
+          <select id="filtro-turma"><option value="">Todas as turmas</option></select>
+          <select id="filtro-disciplina"><option value="">Todas as disciplinas</option></select>
+        </div>
+      </header>
+
+      <div class="cards" id="indicadores-cards">
+        <!-- cards preenchidos por JS -->
+      </div>
+
+      <section class="semaforo">
+        <h3>Semáforo pedagógico</h3>
+        <div class="semaforo-row">
+          <div class="semaforo-item green"><span>Acima de 8</span><small>Bom desempenho</small></div>
+          <div class="semaforo-item yellow"><span>Entre 5 e 7</span><small>Atenção pedagógica</small></div>
+          <div class="semaforo-item red"><span>Abaixo de 5</span><small>Risco</small></div>
+        </div>
+      </section>
+    </section>
+
+    <!-- Página: Evolução -->
+    <section id="page-evolucao" class="page hidden">
+      <header><h2>Evolução dos alunos</h2></header>
+      <div class="charts">
+        <canvas id="chart-evolucao" height="150"></canvas>
+      </div>
+      <div id="leitura-inteligente" class="insight"></div>
+    </section>
+
+    <!-- Página: Mapa Pedagógico -->
+    <section id="page-mapa" class="page hidden">
+      <header><h2>Mapa Pedagógico</h2></header>
+      <table id="tabela-habilidades" class="table">
+        <thead><tr><th>Habilidade</th><th>Média</th><th>Status</th><th>Intervenção</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <!-- Página: Alunos -->
+    <section id="page-alunos" class="page hidden">
+      <header><h2>Alunos</h2></header>
+      <table id="tabela-alunos" class="table">
+        <thead><tr><th>Nome</th><th>Nota</th><th>Frequência</th><th>Risco</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>
